@@ -5,6 +5,7 @@ import LinearAlgebra.triu
 import LinearAlgebra.I
 import LinearAlgebra.det
 import LinearAlgebra.pinv
+import LinearAlgebra.lu
 
 include("./KTBC.jl")
 import .KTBC.CreateKTBC
@@ -164,3 +165,62 @@ S₃ = createS(3)
 @test U₃ * U₃' == H₃
 
 @test S₃' * S₃ == invH₃
+
+# 11
+
+U₃ = createS(3)
+
+SE = [
+ 0.0  0.0  1.0
+ 0.0  1.0  1.0
+ 1.0  1.0  1.0
+]
+
+NW = [
+ 1.0  1.0  1.0
+ 1.0  1.0  0.0
+ 1.0  0.0  0.0
+]
+
+L = [
+ 1.0  0.0  0.0
+ 1.0  1.0  0.0
+ 1.0  1.0  1.0
+]
+
+@test J₃ * U₃ == SE
+
+@test U₃ * J₃ == NW
+
+@test J₃ * U₃ * J₃ == L
+
+@test SE * NW == [
+ 1.0  0.0  0.0
+ 2.0  1.0  0.0
+ 3.0  2.0  1.0
+]
+
+# 12, 13
+L, U = lu(C₄)
+
+@test round.(Int, U * 6) == [
+  12  -6   0  -6
+  0   9  -6  -3
+  0   0   8  -8
+  0   0   0   0
+]
+
+# Only non-zero rows
+U = U[vec(mapslices(row -> any(row .!= 0), U', dims=1)), :]
+Uᵀ = U'
+
+UUᵀ = U * Uᵀ
+U⁺ = Uᵀ * inv(UUᵀ)
+L = C₄ * U⁺
+
+# Proof
+@test C₄ == round.(Int, L * U)
+
+# Or 
+Lₐ = C₄ * pinv(U)
+@test C₄ == round.(Int, Lₐ * U)
