@@ -8,7 +8,6 @@ import LinearAlgebra.diagm
 import LinearAlgebra.Diagonal
 import LinearAlgebra.Bidiagonal
 import LinearAlgebra.Tridiagonal
-import LinearAlgebra.istriu
 import LinearAlgebra.det
 import LinearAlgebra.I
 

@@ -4,13 +4,22 @@ import LinearAlgebra.diagm
 import LinearAlgebra.triu
 import LinearAlgebra.I
 import LinearAlgebra.det
+import LinearAlgebra.pinv
 
 include("./KTBC.jl")
 import .KTBC.CreateKTBC
 
+function createU(dim=3)
+    return I(dim) - diagm(1 => ones(dim - 1))
+end
+
+function createS(dim=3)
+    return triu(ones(dim, dim))
+end
+
 # 3
-U₅ = I(5) - diagm(1 => ones(4))
-S₅ = triu(ones(5, 5))
+U₅ = createU(5)
+S₅ = createS(5)
 
 U₅ * S₅
 
@@ -66,3 +75,92 @@ end
   2.0  4.0  6.0  0.0
   1.0  2.0  3.0  4.0
 ]
+
+# 7
+KTBC₃ = CreateKTBC(3)
+
+T₃ = convert(Array{Int}, KTBC₃[2])
+K₃ - T₃
+
+u = [
+  1
+  0
+  0
+]
+vᵀ = transpose(u)
+
+@test u * vᵀ == K₃ - T₃
+
+invT₃ = inv(T₃)
+invK₃ = inv(K₃)
+
+@test round.(Int, 4(invT₃ - invK₃)) == [
+ 9  6  3
+ 6  4  2
+ 3  2  1
+]
+
+u = [
+  3
+  2
+  1
+]
+vᵀ = transpose(u)
+
+@test 1 / 4 * u * vᵀ == round.(invT₃ - invK₃; digits=2)
+
+# 8
+K₅, T₅ = CreateKTBC(5)
+
+6 * (inv(T₅) - inv(K₅))
+
+6 * inv(K₅)
+
+# 9
+K₄, T₄, B₄, C₄  = CreateKTBC(4)
+f = [
+  1
+  -1
+  1
+  -1
+]
+e = [
+  1
+  1
+  1
+  1
+]
+
+u = pinv(C₄) * f
+
+function roundWithLost(value, lost=10^(-5))
+    round.(Int, lost * value)
+end
+
+# left division operator: \ - action its just like inv(a) * b 
+@test roundWithLost(C₄ \ e) == roundWithLost(inv(C₄) * e)
+@test roundWithLost(C₄ \ f) == roundWithLost(inv(C₄) * f)
+
+# 10
+H₃ = [
+  2 -1 0
+  -1 2 -1
+  0 -1 1
+]
+
+invH₃ = round.(Int, inv(H₃))
+
+I₃ = convert(Array{Int}, I(3))
+
+J₃ = reverse(I₃; dims=2)
+
+@test J₃ * T₃ * J₃ == H₃
+
+@test invH₃ == J₃ * round.(Int, inv(T₃)) * J₃
+
+U₃ = createU(3)
+S₃ = createS(3)
+
+@test U₃ * U₃' == H₃
+
+@test S₃' * S₃ == invH₃
