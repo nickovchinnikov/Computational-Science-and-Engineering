@@ -134,13 +134,13 @@ e = [
 
 u = pinv(C₄) * f
 
-function roundWithLost(value, lost=10^(-5))
+function roundWithLosts(value, lost=10^(-5))
     round.(Int, lost * value)
 end
 
 # left division operator: \ - action its just like inv(a) * b 
-@test roundWithLost(C₄ \ e) == roundWithLost(inv(C₄) * e)
-@test roundWithLost(C₄ \ f) == roundWithLost(inv(C₄) * f)
+@test roundWithLosts(C₄ \ e) == roundWithLosts(inv(C₄) * e)
+@test roundWithLosts(C₄ \ f) == roundWithLosts(inv(C₄) * f)
 
 # 10
 H₃ = [
@@ -210,12 +210,17 @@ L, U = lu(C₄)
   0   0   0   0
 ]
 
+U = 6 \ round.(Int, U * 6)
+
 # Only non-zero rows
 U = U[vec(mapslices(row -> any(row .!= 0), U', dims=1)), :]
 Uᵀ = U'
 
 UUᵀ = U * Uᵀ
+
+UUᵀ = 36 \ round.(Int, 36 * U * Uᵀ)
 U⁺ = Uᵀ * inv(UUᵀ)
+
 L = C₄ * U⁺
 
 # Proof
@@ -224,3 +229,58 @@ L = C₄ * U⁺
 # Or 
 Lₐ = C₄ * pinv(U)
 @test C₄ == round.(Int, Lₐ * U)
+
+# 14
+K₃, = CreateKTBC(3)
+
+# Calculate value
+function makeSingularReduceDiagonal(M, step=.1, detV=.1)
+    n, m = size(M)
+    if (n != m)
+        throw(DimensionMismatch("M must be square matrix!"))
+    end
+    while true
+        M = M - I(n) * step;
+        det(M) <= detV && break
+    end
+    return M
+end
+
+@test_throws DimensionMismatch makeSingularReduceDiagonal([
+  1 2 3
+  1 3 4
+])
+
+singularK₃ = makeSingularReduceDiagonal(K₃, .0000001, .0000001);
+singularK₃
+
+# 1.4142134996579785 <- very close!
+singularK₃[1,1]
+det(singularK₃)
+
+# Solve the equation and give the exact answer √2
+M = [
+  √2 -1 0
+  -1 √2 -1
+  0 -1 √2
+]
+
+M[1,1]
+
+det([
+  √2 -1 0
+  -1 √2 -1
+  0 -1 √2
+])
+
+u = [
+  1
+  √2
+  1
+]
+
+@test round.(Int, M * u) == [
+  0
+  0
+  0
+]
