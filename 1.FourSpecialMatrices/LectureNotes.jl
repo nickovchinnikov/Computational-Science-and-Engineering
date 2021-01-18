@@ -1,18 +1,11 @@
 using Test
 
-import ToeplitzMatrices.Toeplitz
-import SparseArrays.sparse
-import LinearAlgebra.triu
-import LinearAlgebra.diag
-import LinearAlgebra.diagm
-import LinearAlgebra.Diagonal
-import LinearAlgebra.Bidiagonal
-import LinearAlgebra.Tridiagonal
-import LinearAlgebra.det
-import LinearAlgebra.I
+using ToeplitzMatrices: Toeplitz
+using SparseArrays: sparse
+using LinearAlgebra: triu, diag, diagm, Diagonal, Bidiagonal, Tridiagonal, det, I
 
-include("./KTBC.jl")
-import .KTBC.CreateKTBC
+include("../lib/KTBC.jl")
+using .KTBC: CreateKTBC
 
 # Difference matrix
 K₄ = Toeplitz([2, -1, 0, 0], [2, -1, 0, 0])

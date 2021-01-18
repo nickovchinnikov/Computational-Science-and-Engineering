@@ -1,10 +1,10 @@
 module KTBC
-  using Test
+using Test
 
-  import ToeplitzMatrices.Toeplitz
-  import LinearAlgebra.Tridiagonal
+import ToeplitzMatrices.Toeplitz
+import LinearAlgebra.Tridiagonal
 
-  function CreateKTBC(dims=2)
+function CreateKTBC(dims=2)
     toeplitzArgs = [2, -1, zeros(dims - 2)...]
     K = Tridiagonal(Toeplitz(toeplitzArgs, toeplitzArgs))
     T = copy(K)
@@ -17,29 +17,29 @@ module KTBC
     return K, T, B, C
 end
 
-  K, T, B, C = CreateKTBC(3)
+K, T, B, C = CreateKTBC(3)
 
-  @test K == [
-    2.0 -1.0 0.0
-    -1.0 2.0 -1.0
-    0.0 -1.0 2.0
-  ]
+@test K == [
+  2.0 -1.0 0.0
+  -1.0 2.0 -1.0
+  0.0 -1.0 2.0
+]
 
-  @test T == [
-    1.0 -1.0 0.0
-    -1.0 2.0 -1.0
-    0.0 -1.0 2.0
-  ]
+@test T == [
+  1.0 -1.0 0.0
+  -1.0 2.0 -1.0
+  0.0 -1.0 2.0
+]
 
-  @test B == [
-    1.0 -1.0 0.0
-    -1.0 2.0 -1.0
-    0.0 -1.0 1.0
-  ]
+@test B == [
+  1.0 -1.0 0.0
+  -1.0 2.0 -1.0
+  0.0 -1.0 1.0
+]
 
-  @test C == [
-    2.0 -1.0 -1.0
-    -1.0 2.0 -1.0
-    -1.0 -1.0 2.0
-  ]
+@test C == [
+  2.0 -1.0 -1.0
+  -1.0 2.0 -1.0
+  -1.0 -1.0 2.0
+]
 end
