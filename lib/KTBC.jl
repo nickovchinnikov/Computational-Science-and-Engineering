@@ -17,6 +17,8 @@ function CreateKTBC(dims=2)
     return K, T, B, C
 end
 
+export CreateKTBC
+
 K, T, B, C = CreateKTBC(3)
 
 @test K == [
