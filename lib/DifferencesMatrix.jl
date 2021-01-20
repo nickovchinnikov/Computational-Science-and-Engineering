@@ -30,5 +30,12 @@ end
   0 1 -2
 ]
 
-export backwardDiff, forwardDiff
+function centeredDiff(dim::Int)
+    return diagm(-1 => -ones(dim - 1), 0 => zeros(dim), 1 => ones(dim - 1))
+end
+
+@test centeredDiff(3) == backwardDiff(3) - (-forwardDiff(3))
+
+export backwardDiff, forwardDiff, centeredDiff
+
 end

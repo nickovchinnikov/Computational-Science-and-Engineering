@@ -80,5 +80,7 @@ function mathlabExperiment(n::Int)
 end
 
 f, e, T, V, E = mathlabExperiment(3)
+f, e, T, V, E = mathlabExperiment(7)
+f, e, T, V, E = mathlabExperiment(15)
 
 end
