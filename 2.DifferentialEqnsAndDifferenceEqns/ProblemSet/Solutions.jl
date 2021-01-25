@@ -4,6 +4,9 @@ using Plots
 include("../../lib/DifferencesMatrix.jl")
 using .DifferencesMatrix: backwardDiff, forwardDiff, centeredDiff
 
+include("../../lib/SpecialVectors.jl")
+using .SpecialVectors: squares
+
 # 8
 dim = 5
 forwardDiff(dim) - backwardDiff(dim)
@@ -23,15 +26,38 @@ function discretSolution(n::Int)
     return u
 end
 
+n = 7
+
 trueSolutions(x) = (1 / 2) * (1 - x^2)
 
-steps = 0:1/8:1
+steps = 0:1 / (n + 1):1
 
-uₜ = trueSolutions.([steps...])[2:8]
+uₜ = trueSolutions.([steps...])[2:(n + 1)]
 plot(uₜ)
 
-u₇ = discretSolution(7)
+u₇ = discretSolution(n)
 plot!(u₇)
 
 e = uₜ - u₇
 plot(e)
+
+# 14
+function cosAgainstDiscretCos(n::Int)
+    x = 0:10^(-2):1
+
+    h = 1 / (n + 1)
+    xᵢ = 0:h:1
+    scaler = 4 * π
+
+    u = cos.(scaler * x)
+    uᵢ = cos.(scaler * (1:n + 2) * h)
+
+    lineWidth = 2
+    plot(x, u, title="Cos/DiscretCos Oscilations with N=$n", label="cos", lw = lineWidth)
+    plot!(xᵢ, uᵢ, label="discret cos", lw = lineWidth)
+end
+
+cosAgainstDiscretCos(3)
+cosAgainstDiscretCos(20)
+cosAgainstDiscretCos(150)
+cosAgainstDiscretCos(350)
