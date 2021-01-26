@@ -7,6 +7,9 @@ using .DifferencesMatrix: backwardDiff, forwardDiff, centeredDiff
 include("../../lib/SpecialVectors.jl")
 using .SpecialVectors: squares
 
+include("../../lib/KTBC.jl")
+using .KTBC: CreateKTBC
+
 # 8
 dim = 5
 forwardDiff(dim) - backwardDiff(dim)
@@ -27,12 +30,10 @@ function discretSolution(n::Int)
 end
 
 n = 7
-
-trueSolutions(x) = (1 / 2) * (1 - x^2)
-
+analogSolution(x) = (1 / 2) * (1 - x^2)
 steps = 0:1 / (n + 1):1
 
-uₜ = trueSolutions.([steps...])[2:(n + 1)]
+uₜ = analogSolution.([steps...])[2:(n + 1)]
 plot(uₜ)
 
 u₇ = discretSolution(n)
@@ -47,17 +48,40 @@ function cosAgainstDiscretCos(n::Int)
 
     h = 1 / (n + 1)
     xᵢ = 0:h:1
-    scaler = 4 * π
+    ω = 4 * π
 
-    u = cos.(scaler * x)
-    uᵢ = cos.(scaler * (1:n + 2) * h)
+    u = cos.(ω * x)
+    uᵢ = cos.(ω * h * (1:n + 2))
 
     lineWidth = 2
-    plot(x, u, title="Cos/DiscretCos Oscilations with N=$n", label="cos", lw = lineWidth)
-    plot!(xᵢ, uᵢ, label="discret cos", lw = lineWidth)
+    plot(x, u, label="analog cos", lw=lineWidth, title="Cos/DiscretCos Oscilations with N=$n")
+    plot!(xᵢ, uᵢ, label="discret cos", lw=lineWidth)
 end
 
 cosAgainstDiscretCos(3)
 cosAgainstDiscretCos(20)
 cosAgainstDiscretCos(150)
 cosAgainstDiscretCos(350)
+
+# 16
+function analogAndDiscretSolutions(n::Int)
+    ω = 4 * π
+    h = 1 / (n + 1)
+
+    rangeₐ = 0:10^(-2):1
+
+    analogSolution(x) = ((ω)^-2) * cos(ω * x) - ((ω)^-2)
+    u = analogSolution.(rangeₐ)
+  
+    rangeᵢ = h * (1:n)
+    Kₙ, Tₙ, Bₙ, Cₙ = CreateKTBC(n)
+    uᵢ = h^2 * inv(Kₙ) * cos.(ω * rangeᵢ)
+
+    plot(rangeₐ, u, label="analog", title="Analog+Discret solutions with N=$n")
+    plot!(rangeᵢ, uᵢ, label="discret")
+end
+
+analogAndDiscretSolutions(4)
+analogAndDiscretSolutions(8)
+analogAndDiscretSolutions(16)
+analogAndDiscretSolutions(32)
