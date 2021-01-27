@@ -21,9 +21,17 @@ backwardDiff(dim) * centeredDiff(dim)
 # 10
 forwardDiff(dim) * backwardDiff(dim)
 
+function getH(n::Int)
+    return 1 / (n + 1)
+end
+
+function getAnalogRange()
+  return 0:10^(-2):1
+end
+
 # 13
 function discretSolution(n::Int)
-    h = 1 / (n + 1)
+    h = getH(n)
     T = backwardDiff(n) * (-forwardDiff(n))
     u = h^2 * inv(T) * ones(n)
     return u
@@ -44,9 +52,9 @@ plot(e)
 
 # 14
 function cosAgainstDiscretCos(n::Int)
-    x = 0:10^(-2):1
+    x = getAnalogRange()
 
-    h = 1 / (n + 1)
+    h = getH(n)
     xᵢ = 0:h:1
     ω = 4 * π
 
@@ -66,9 +74,9 @@ cosAgainstDiscretCos(350)
 # 16
 function analogAndDiscretSolutions(n::Int)
     ω = 4 * π
-    h = 1 / (n + 1)
+    h = getH(n)
 
-    rangeₐ = 0:10^(-2):1
+    rangeₐ = getAnalogRange()
 
     analogSolution(x) = ((ω)^-2) * cos(ω * x) - ((ω)^-2)
     u = analogSolution.(rangeₐ)
@@ -88,15 +96,15 @@ analogAndDiscretSolutions(32)
 
 # 18
 function analogAndDiscretSolutions2(n::Int)
-    h = 1 / (n + 1)
+    h = getH(n)
 
-    rangeₐ = 0:10^(-2):1
+    rangeₐ = getAnalogRange()
 
     analogSolution(x) = (x / 6) * (x^2 - 1)
     u = analogSolution.(rangeₐ)
   
     rangeᵢ = h * (1:n)
-    Kₙ, Tₙ, Bₙ, Cₙ = CreateKTBC(n)
+    Kₙ = CreateKTBC(n)[1]
     uᵢ = h^2 * inv(-Kₙ) * rangeᵢ
 
     plot(rangeₐ, u, label="analog", title="Analog+Discret solutions with N=$n")
@@ -107,3 +115,35 @@ analogAndDiscretSolutions2(4)
 analogAndDiscretSolutions2(8)
 analogAndDiscretSolutions2(32)
 analogAndDiscretSolutions2(64)
+
+# 19
+function analogAndDiscretSolutions3(n::Int)
+    h = getH(n)
+
+    rangeₐ = getAnalogRange()
+
+    cₐ = 1 / (ℯ - 1)
+    analogSolution(x) = cₐ - cₐ * ℯ^x + x
+    u = analogSolution.(rangeₐ)
+
+    f = ones(n)
+    ◬₊ = forwardDiff(n)
+    ◬₋ = backwardDiff(n)
+    ◬₀ = (◬₊ + ◬₋) / (2 * h)
+    Kₙ = CreateKTBC(n)[1]
+    K = Kₙ / (h^2)
+
+    rangeᵢ = h * (1:n)
+    uᵢ = round.(inv(K + ◬₀) * f, digits=4)
+    u₊ = round.(inv(K + ◬₊/h) * f, digits=4)
+
+    plot(rangeₐ, u, label="analog", title="Analog+Discret solutions with N=$n")
+    plot!(rangeᵢ, uᵢ, label="discret centered")
+    plot!(rangeᵢ, u₊, label="discret uncentered")
+end
+
+analogAndDiscretSolutions3(4)
+analogAndDiscretSolutions3(8)
+analogAndDiscretSolutions3(16)
+analogAndDiscretSolutions3(32)
+analogAndDiscretSolutions3(64)
