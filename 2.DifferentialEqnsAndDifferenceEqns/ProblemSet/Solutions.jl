@@ -26,14 +26,14 @@ function getH(n::Int)
 end
 
 function getAnalogRange()
-  return 0:10^(-2):1
+    return 0:10^(-2):1
 end
 
 # 13
 function discretSolution(n::Int)
     h = getH(n)
     T = backwardDiff(n) * (-forwardDiff(n))
-    u = h^2 * inv(T) * ones(n)
+    u = h^2 * (T \ ones(n))
     return u
 end
 
@@ -83,7 +83,7 @@ function analogAndDiscretSolutions(n::Int)
   
     rangeᵢ = h * (1:n)
     Kₙ, Tₙ, Bₙ, Cₙ = CreateKTBC(n)
-    uᵢ = h^2 * inv(Kₙ) * cos.(ω * rangeᵢ)
+    uᵢ = h^2 * (Kₙ \ cos.(ω * rangeᵢ))
 
     plot(rangeₐ, u, label="analog", title="Analog+Discret solutions with N=$n")
     plot!(rangeᵢ, uᵢ, label="discret")
@@ -105,7 +105,7 @@ function analogAndDiscretSolutions2(n::Int)
   
     rangeᵢ = h * (1:n)
     Kₙ = CreateKTBC(n)[1]
-    uᵢ = h^2 * inv(-Kₙ) * rangeᵢ
+    uᵢ = h^2 * (-Kₙ \ rangeᵢ)
 
     plot(rangeₐ, u, label="analog", title="Analog+Discret solutions with N=$n")
     plot!(rangeᵢ, uᵢ, label="discret")
@@ -134,8 +134,8 @@ function analogAndDiscretSolutions3(n::Int)
     K = Kₙ / (h^2)
 
     rangeᵢ = h * (1:n)
-    uᵢ = round.(inv(K + ◬₀) * f, digits=4)
-    u₊ = round.(inv(K + ◬₊/h) * f, digits=4)
+    uᵢ = round.((K + ◬₀) \ f, digits=4)
+    u₊ = round.((K + ◬₊ / h) \ f, digits=4)
 
     plot(rangeₐ, u, label="analog", title="Analog+Discret solutions with N=$n")
     plot!(rangeᵢ, uᵢ, label="discret centered")
