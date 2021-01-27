@@ -85,3 +85,25 @@ analogAndDiscretSolutions(4)
 analogAndDiscretSolutions(8)
 analogAndDiscretSolutions(16)
 analogAndDiscretSolutions(32)
+
+# 18
+function analogAndDiscretSolutions2(n::Int)
+    h = 1 / (n + 1)
+
+    rangeₐ = 0:10^(-2):1
+
+    analogSolution(x) = (x / 6) * (x^2 - 1)
+    u = analogSolution.(rangeₐ)
+  
+    rangeᵢ = h * (1:n)
+    Kₙ, Tₙ, Bₙ, Cₙ = CreateKTBC(n)
+    uᵢ = h^2 * inv(-Kₙ) * rangeᵢ
+
+    plot(rangeₐ, u, label="analog", title="Analog+Discret solutions with N=$n")
+    plot!(rangeᵢ, uᵢ, label="discret")
+end
+
+analogAndDiscretSolutions2(4)
+analogAndDiscretSolutions2(8)
+analogAndDiscretSolutions2(32)
+analogAndDiscretSolutions2(64)
