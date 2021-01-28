@@ -115,3 +115,19 @@ L, U = lu(K)
 L = pascalL(5)
 
 @test K == round.(L * L')
+
+# 13
+Fib = [
+  1 1
+  1 0
+]
+
+v = [
+  1
+  0
+]
+
+@test Fib^6 * v == [
+  13
+  8
+]
