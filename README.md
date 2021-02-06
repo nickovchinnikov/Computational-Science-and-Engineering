@@ -4,26 +4,32 @@
 
 Paper+pen solutions and Julia code
 
-## 1. Four Special Matrices
+## Applied Linear Algebra
+
+### 1. Four Special Matrices
 
 [Solutions](https://github.com/nickovchinnikov/Computational-Science-and-Engineering/tree/master/1.AppliedLInearAlgebra/1.FourSpecialMatrices/ProblemSet)
 
-## 2. Differential Equations and Difference Equations
+### 2. Differential Equations and Difference Equations
 
 [Solutions](https://github.com/nickovchinnikov/Computational-Science-and-Engineering/tree/master/1.AppliedLInearAlgebra/2.DifferentialEqnsAndDifferenceEqns/ProblemSet)
 
-## 3. Solving a linear system
+### 3. Solving a linear system
 
 [Solutions](https://github.com/nickovchinnikov/Computational-Science-and-Engineering/tree/master/1.AppliedLInearAlgebra/3.SolvingALinearSystem)
 
-## 4. Delta Function
+### 4. Delta Function
 
 [Solutions](https://github.com/nickovchinnikov/Computational-Science-and-Engineering/tree/master/1.AppliedLInearAlgebra/4.DeltaFunction)
 
-## 5. Eigenvalues and Eigenvectors
+### 5. Eigenvalues and Eigenvectors
 
 [Solutions](https://github.com/nickovchinnikov/Computational-Science-and-Engineering/tree/master/1.AppliedLInearAlgebra/5.EigenvaluesAndEigenvectors)
 
-## 6. Positive Definite Matrices
+### 6. Positive Definite Matrices
 
 [Solutions](https://github.com/nickovchinnikov/Computational-Science-and-Engineering/tree/master/1.AppliedLInearAlgebra/6.PositiveDefiniteMatrices)
+
+### 7. Numerical Linear Algebra
+
+[Solutions](https://github.com/nickovchinnikov/Computational-Science-and-Engineering/tree/master/1.AppliedLInearAlgebra/7.NumericalLinearAlgebra)
