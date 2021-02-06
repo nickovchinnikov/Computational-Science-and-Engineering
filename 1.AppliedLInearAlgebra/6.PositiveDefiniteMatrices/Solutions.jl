@@ -6,7 +6,7 @@ using Calculus
 
 # using SymbolicUtils
 
-include("../lib/KTBC.jl")
+include("../../lib/KTBC.jl")
 using .KTBC: CreateKTBC
 
 using Pkg

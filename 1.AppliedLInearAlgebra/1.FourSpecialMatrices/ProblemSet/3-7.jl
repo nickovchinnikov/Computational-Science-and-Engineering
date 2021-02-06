@@ -5,7 +5,7 @@ import LinearAlgebra.triu
 import LinearAlgebra.I
 import LinearAlgebra.det
 
-include("../../lib/KTBC.jl")
+include("../../../lib/KTBC.jl")
 import .KTBC.CreateKTBC
 
 function createU(dim=3)

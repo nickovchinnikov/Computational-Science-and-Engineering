@@ -1,13 +1,13 @@
 using Test
 using Plots
 
-include("../../lib/DifferencesMatrix.jl")
+include("../../../lib/DifferencesMatrix.jl")
 using .DifferencesMatrix: backwardDiff, forwardDiff, centeredDiff
 
-include("../../lib/SpecialVectors.jl")
+include("../../../lib/SpecialVectors.jl")
 using .SpecialVectors: squares
 
-include("../../lib/KTBC.jl")
+include("../../../lib/KTBC.jl")
 using .KTBC: CreateKTBC
 
 # 8

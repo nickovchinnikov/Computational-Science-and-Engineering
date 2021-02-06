@@ -5,7 +5,7 @@ import LinearAlgebra.det
 import LinearAlgebra.pinv
 import LinearAlgebra.lu
 
-include("../KTBC.jl")
+include("../../../lib/KTBC.jl")
 import .KTBC.CreateKTBC
 
 # 14

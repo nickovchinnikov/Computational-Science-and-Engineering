@@ -2,13 +2,13 @@ module Lecture2
 
 using Test
 
-include("../lib/KTBC.jl")
+include("../../lib/KTBC.jl")
 import .KTBC.CreateKTBC
 
-include("../lib/SpecialVectors.jl")
+include("../../lib/SpecialVectors.jl")
 using .SpecialVectors: constants, linear, squares, rampAtK, sines, cosines, exponentials
 
-include("../lib/DifferencesMatrix.jl")
+include("../../lib/DifferencesMatrix.jl")
 using .DifferencesMatrix: backwardDiff, forwardDiff
 
 dims = 4

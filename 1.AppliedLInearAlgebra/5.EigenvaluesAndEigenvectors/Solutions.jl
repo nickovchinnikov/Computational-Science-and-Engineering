@@ -1,7 +1,7 @@
 using Test
 using LinearAlgebra
 
-include("../lib/KTBC.jl")
+include("../../lib/KTBC.jl")
 using .KTBC: CreateKTBC
 
 # 1

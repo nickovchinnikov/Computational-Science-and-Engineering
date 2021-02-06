@@ -13,7 +13,7 @@ begin
 	using Calculus;
 	using PlutoUI;
 	
-	include("../lib/KTBC.jl");
+	include("../../lib/KTBC.jl");
 	using .KTBC: CreateKTBC;
 end
 

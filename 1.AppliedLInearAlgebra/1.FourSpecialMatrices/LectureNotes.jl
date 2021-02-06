@@ -4,7 +4,7 @@ using ToeplitzMatrices: Toeplitz
 using SparseArrays: sparse
 using LinearAlgebra: triu, diag, diagm, Diagonal, Bidiagonal, Tridiagonal, det, I
 
-include("../lib/KTBC.jl")
+include("../../lib/KTBC.jl")
 using .KTBC: CreateKTBC
 
 # Difference matrix

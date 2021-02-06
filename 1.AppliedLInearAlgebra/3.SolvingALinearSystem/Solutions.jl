@@ -1,7 +1,7 @@
 using Test
 using Plots
 
-include("../lib/KTBC.jl")
+include("../../lib/KTBC.jl")
 using .KTBC: CreateKTBC
 
 using LinearAlgebra: I, SymTridiagonal, lu, cholesky, det, eigen, Diagonal, diag, diagm, PosDefException
