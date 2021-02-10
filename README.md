@@ -33,3 +33,9 @@ Paper+pen solutions and Julia code
 ### 7. Numerical Linear Algebra
 
 [Solutions](https://github.com/nickovchinnikov/Computational-Science-and-Engineering/tree/master/1.AppliedLInearAlgebra/7.NumericalLinearAlgebra)
+
+## Framework for applied math
+
+### 1. Least squares for rectangular matrix
+
+[Notes + Solutions](https://github.com/nickovchinnikov/Computational-Science-and-Engineering/tree/master/2.FrameworkForAppliedMath/3.LeastSquaresForRectangularMatrix)
