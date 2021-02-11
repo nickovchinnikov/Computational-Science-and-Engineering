@@ -4,7 +4,7 @@
 
 Paper+pen solutions and Julia code
 
-## Applied Linear Algebra
+## Chapter 1. Applied Linear Algebra
 
 ### 1. Four Special Matrices
 
@@ -34,8 +34,12 @@ Paper+pen solutions and Julia code
 
 [Solutions](https://github.com/nickovchinnikov/Computational-Science-and-Engineering/tree/master/1.AppliedLInearAlgebra/7.NumericalLinearAlgebra)
 
-## Framework for applied math
+## Chapter 2. Framework for applied math
 
-### 1. Least squares for rectangular matrix
+### 3. Least squares for rectangular matrix
 
 [Notes + Solutions](https://github.com/nickovchinnikov/Computational-Science-and-Engineering/tree/master/2.FrameworkForAppliedMath/3.LeastSquaresForRectangularMatrix)
+
+### 4. Graph models and Kirchhoff's Laws
+
+[Notes + Solutions](https://github.com/nickovchinnikov/Computational-Science-and-Engineering/tree/master/2.FrameworkForAppliedMath/4.GraphModelsAndKirchhoffsLaws)
