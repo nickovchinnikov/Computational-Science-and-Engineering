@@ -1,6 +1,6 @@
 # Computational-Science-and-Engineering
 
-18.085 Gilbert Strang Computational Science and Engineering
+[18.085 Gilbert Strang Computational Science and Engineering](https://ocw.mit.edu/courses/mathematics/18-085-computational-science-and-engineering-i-fall-2008/index.htm)
 
 Paper+pen solutions and Julia code
 
