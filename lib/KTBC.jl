@@ -1,6 +1,9 @@
 module KTBC
 using Test
 
+import Pkg
+Pkg.add("ToeplitzMatrices")
+
 import ToeplitzMatrices.Toeplitz
 import LinearAlgebra.Tridiagonal
 

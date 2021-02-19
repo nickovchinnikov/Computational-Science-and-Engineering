@@ -1,6 +1,10 @@
 using Test
 using Plots
 
+import Pkg
+Pkg.add("ToeplitzMatrices")
+Pkg.add("SparseArrays")
+
 import SparseArrays.spdiagm
 import LinearAlgebra.I
 import ToeplitzMatrices.Toeplitz

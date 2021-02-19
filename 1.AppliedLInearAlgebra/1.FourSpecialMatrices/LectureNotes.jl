@@ -1,5 +1,8 @@
 using Test
 
+import Pkg
+Pkg.add("ToeplitzMatrices")
+
 using ToeplitzMatrices: Toeplitz
 using SparseArrays: sparse
 using LinearAlgebra: triu, diag, diagm, Diagonal, Bidiagonal, Tridiagonal, det, I

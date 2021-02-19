@@ -7,8 +7,15 @@ using InteractiveUtils
 # ╔═╡ 9a052fc4-6c5e-11eb-24e7-3f1da02508bc
 begin
 	using Test
-	using SymPy
+	using Pkg
 	using LinearAlgebra
+	
+	Pkg.build("PyCall")
+	Pkg.add("SymPy")
+	Pkg.add("Images")
+	Pkg.add("ImageIO")
+	
+	using SymPy
 	using Images
 	using ImageIO
 	
