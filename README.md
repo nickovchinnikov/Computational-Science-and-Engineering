@@ -55,3 +55,9 @@ Paper+pen solutions and Julia code
 ### 5. Networks and transfer function
 
 [Solutions](https://github.com/nickovchinnikov/Computational-Science-and-Engineering/tree/master/2.FrameworkForAppliedMath/5.NetworksAndTransferFunction)
+
+## Chapter 3. Boundary value problem
+
+### 1. Differential equations and finite elements
+
+[Solutions](https://github.com/nickovchinnikov/Computational-Science-and-Engineering/tree/master/3.BoundaryValueProblems/1.DefferentialEquationsAndFiniteElements)
