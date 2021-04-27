@@ -61,3 +61,23 @@ Paper+pen solutions and Julia code
 ### 1. Differential equations and finite elements
 
 [Solutions](https://github.com/nickovchinnikov/Computational-Science-and-Engineering/tree/master/3.BoundaryValueProblems/1.DefferentialEquationsAndFiniteElements)
+
+### 2. Cubic Splines and Fourth Order Equations
+
+[Solutions](https://github.com/nickovchinnikov/Computational-Science-and-Engineering/tree/master/3.BoundaryValueProblems/2.CubicSplinesAndFourthOrderEquations)
+
+### 3. GradientAndDivergence
+
+[Solutions](https://github.com/nickovchinnikov/Computational-Science-and-Engineering/tree/master/3.BoundaryValueProblems/3.GradientAndDivergence)
+
+### 4. LaplacesEquation
+
+[Solutions](https://github.com/nickovchinnikov/Computational-Science-and-Engineering/tree/master/3.BoundaryValueProblems/4.LaplacesEquation)
+
+### Exam 2
+
+[Solutions](https://github.com/nickovchinnikov/Computational-Science-and-Engineering/tree/master/3.BoundaryValueProblems/Exam2)
+
+## Chapter 4. Fourier Series and Integrals
+
+[Solutions](https://github.com/nickovchinnikov/Computational-Science-and-Engineering/tree/master/4.FourierSeriesAndIntegrals/1.FourierSeriesForPeriodicFunctions)
