@@ -80,4 +80,10 @@ Paper+pen solutions and Julia code
 
 ## Chapter 4. Fourier Series and Integrals
 
+### 1.FourierSeriesForPeriodicFunctions
+
 [Solutions](https://github.com/nickovchinnikov/Computational-Science-and-Engineering/tree/master/4.FourierSeriesAndIntegrals/1.FourierSeriesForPeriodicFunctions)
+
+### 2.ChebyshevLegendreAndBessel
+
+[Solutions](https://github.com/nickovchinnikov/Computational-Science-and-Engineering/tree/master/4.FourierSeriesAndIntegrals/2.ChebyshevLegendreAndBessel)
