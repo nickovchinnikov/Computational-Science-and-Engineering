@@ -87,3 +87,7 @@ Paper+pen solutions and Julia code
 ### 2.ChebyshevLegendreAndBessel
 
 [Solutions](https://github.com/nickovchinnikov/Computational-Science-and-Engineering/tree/master/4.FourierSeriesAndIntegrals/2.ChebyshevLegendreAndBessel)
+
+### 3.DiscretFourierTransformAndTheFFT
+
+[Solutions](https://github.com/nickovchinnikov/Computational-Science-and-Engineering/tree/master/4.FourierSeriesAndIntegrals/3.DiscretFourierTransformAndTheFFT)
