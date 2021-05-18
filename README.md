@@ -91,3 +91,15 @@ Paper+pen solutions and Julia code
 ### 3.DiscretFourierTransformAndTheFFT
 
 [Solutions](https://github.com/nickovchinnikov/Computational-Science-and-Engineering/tree/master/4.FourierSeriesAndIntegrals/3.DiscretFourierTransformAndTheFFT)
+
+### 4.ConvolutionAndSignalProcessing
+
+[Solutions](https://github.com/nickovchinnikov/Computational-Science-and-Engineering/tree/master/4.FourierSeriesAndIntegrals/4.ConvolutionAndSignalProcessing)
+
+### 5.FourierIntegrals
+
+[Solutions](https://github.com/nickovchinnikov/Computational-Science-and-Engineering/tree/master/4.FourierSeriesAndIntegrals/5.FourierIntegrals)
+
+### Final Exam (2007 solutions)
+
+[Solutions](https://github.com/nickovchinnikov/Computational-Science-and-Engineering/tree/master/4.FourierSeriesAndIntegrals/Exam)
